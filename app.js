@@ -35,13 +35,13 @@ app.use('/users',adminRoutes);
 app.use('/premium',premiumRoutes);
 app.use('/password',forgotPasswordRoutes);
 
-const accessLogStream=fs.createWriteStream(
-    path.join(__dirname,'access.log'),
-    {flags:'a'}
-);
+// const accessLogStream=fs.createWriteStream(
+//     path.join(__dirname,'access.log'),
+//     {flags:'a'}
+// );
 app.use(helmet());
 app.use(compression());
-app.use(morgan('combined',{stream:accessLogStream}));
+// app.use(morgan('combined',{stream:accessLogStream}));
 
 
 User.hasMany(Expense,{ foreignKey: 'userId' });
