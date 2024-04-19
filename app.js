@@ -29,6 +29,8 @@ app.use(express.static('./public'));
 
 
 app.use(express.json());
+
+  
 app.use('/users',adminRoutes);
 app.use('/premium',premiumRoutes);
 app.use('/password',forgotPasswordRoutes);
@@ -40,6 +42,7 @@ const accessLogStream=fs.createWriteStream(
 app.use(helmet());
 app.use(compression());
 app.use(morgan('combined',{stream:accessLogStream}));
+
 
 User.hasMany(Expense,{ foreignKey: 'userId' });
 Expense.belongsTo(User);
