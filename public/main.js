@@ -76,7 +76,7 @@ btnLeaderBoard.onclick = async () => {
         console.log("style updated")
         leaderBoardTitle.textContent = "Leader Board:";
         console.log("token in leaderboard", token);
-        const response = await axios.get("http://51.20.32.126:3000/premium/showleaderboard", {
+        const response = await axios.get("https://16.171.220.37:3000/premium/showleaderboard", {
             headers: { Authorization: token }
         });
         const data = response.data;
@@ -137,7 +137,7 @@ if (tbody) {
 const btnDownload=document.getElementById('btn_download');
 btnDownload.onclick=async function(){
     try{
-     const response=  await  axios.get('http://51.20.32.126:3000/users/download', { headers: {"Authorization" : token} });
+     const response=  await  axios.get('https://16.171.220.37:3000/users/download', { headers: {"Authorization" : token} });
 
      console.log(response.status);
          if(response.status === 200){
@@ -173,7 +173,7 @@ btnDownload.onclick=async function(){
         // }
         try{
             console.log("Making request to get premium membership...");
-            const response=await axios.get('http://51.20.32.126:3000/users/premium/premiummembership',{
+            const response=await axios.get('https://16.171.220.37:3000/users/premium/premiummembership',{
             headers:{'Authorization':token}});
 
             console.log("get succesful");
@@ -184,7 +184,7 @@ btnDownload.onclick=async function(){
             "key":response.data.key_id,
             "order_id":response.data.order.id,
             "handler":async function (response){
-                await axios.post('http://51.20.32.126:3000/users/premium/updateTransactionStatus',{
+                await axios.post('https://16.171.220.37:3000/users/premium/updateTransactionStatus',{
                     order_id:options.order_id,
                     payment_id:response.razorpay_payment_id,
                 },{headers:{'Authorization':token}})
@@ -399,7 +399,7 @@ limitSubmitButton.addEventListener('click', () => {
 async function displayDownloadHistory() {
     try {
         // Fetch download history from the server
-        const response = await axios.get('http://51.20.32.126:3000/premium/alldownloadhistory', { headers: { "Authorization": token } });
+        const response = await axios.get('https://16.171.220.37:3000/premium/alldownloadhistory', { headers: { "Authorization": token } });
         console.log(response);
         // Get reference to the download history list
         const downloadHistoryList = document.getElementById('downloadHistoryList');

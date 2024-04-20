@@ -46,7 +46,7 @@ exports.forgotpassword = async (req, res) => {
         const uuid = forgetpasswordrequest.id;
         await user.createForgotpassword({ uuid, isActive: true })
         if (user) {
-            const link = `http://51.20.32.126:3000/password/resestpassword/${uuid}`;
+            const link = `https://16.171.220.37:3000/password/resestpassword/${uuid}`;
            await SendEmail(req, res, link, email);
            return res.json({ message: 'Email sent successfully', success: true });
        
@@ -76,7 +76,7 @@ exports.sendForm = async (req, res, next) => {
 
     // Include the axios script directly inside the HTML string
     const htmlContent = `
-        <form action="http://51.20.32.126:3000/password/resestpassword/${uuid}" method="POST" id="reset-passsword-form" class="form"> 
+        <form action="https://16.171.220.37:3000/password/resestpassword/${uuid}" method="POST" id="reset-passsword-form" class="form"> 
             <div class="form-group">
                 <label for="pass">New Password:</label>
                 <input type="password" id="pass" name="pass" autocomplete="new-password" required>
@@ -89,7 +89,7 @@ exports.sendForm = async (req, res, next) => {
                 e.preventDefault();
                 const password = document.getElementById("pass").value;
                 try {
-                    const response = await axios.post('http://51.20.32.126:3000/password/resestpassword/${uuid}', { pass: password });
+                    const response = await axios.post('https://16.171.220.37:3000/password/resestpassword/${uuid}', { pass: password });
                     if (response.data.success) {
                         alert(response.data.message);
                     } else {
