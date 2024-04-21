@@ -7,7 +7,7 @@ const handleSubmit = async (e) => {
 
     console.log(newData);
 
-    await axios.post("https://16.171.220.37:3000/password/forgotpassword", newData)
+    await axios.post("http://16.171.220.37:3000/password/forgotpassword", newData)
         .then((res) => {
             console.log(res);
             if (res.data.success) {
